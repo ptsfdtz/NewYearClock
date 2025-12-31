@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 
-// const getNextYearTarget = () => {
-//   const now = new Date()
-//   const year = now.getFullYear() + 1
-//   return new Date(`${year}-01-01T00:00:00`).getTime()
-// }
-const getNextYearTarget = () => Date.now() + 5000
+const getNextYearTarget = () => {
+  const now = new Date()
+  const year = now.getFullYear() + 1
+  return new Date(`${year}-01-01T00:00:00`).getTime()
+}
+// const getNextYearTarget = () => Date.now() + 5000
 
 const getTargetYear = (targetTime: number) => new Date(targetTime).getFullYear()
 
