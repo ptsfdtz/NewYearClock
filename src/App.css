@@ -1,0 +1,520 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Russo+One&display=swap');
+
+.mode-countdown {
+  background-color: rgb(129, 155, 190);
+}
+
+.mode-countdown .countdown-root {
+  position: fixed;
+  inset: 0;
+  background-color: rgb(129, 155, 190);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.mode-countdown .snow-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mode-countdown .container {
+  position: absolute;
+  top: 80px;
+  left: 100px;
+  right: 100px;
+  bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.mode-countdown .container h2 {
+  text-align: center;
+  font-size: 10em;
+  line-height: 0.7em;
+  color: #ffffff;
+  margin-top: -80px;
+}
+
+.mode-countdown .container h2 span {
+  display: block;
+  font-weight: 300;
+  letter-spacing: 6px;
+  font-size: 0.2em;
+}
+
+.mode-countdown .countdown {
+  display: flex;
+  margin-top: 50px;
+}
+
+.mode-countdown .countdown div {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  background: #333333;
+  color: #ffffff;
+  margin: 0 15px;
+  font-size: 3em;
+  font-weight: 500;
+  border-radius: 10px 10px 0 0;
+}
+
+.mode-countdown .countdown div::before {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  width: 100%;
+  height: 35px;
+  background: #b00000;
+  color: #ffffff;
+  font-size: 0.35em;
+  line-height: 35px;
+  font-weight: 300;
+  border-radius: 0 0 10px 10px;
+}
+
+.mode-countdown .countdown div:nth-child(1)::before {
+  content: '天';
+}
+
+.mode-countdown .countdown div:nth-child(2)::before {
+  content: '时';
+}
+
+.mode-countdown .countdown div:nth-child(3)::before {
+  content: '分';
+}
+
+.mode-countdown .countdown div:nth-child(4)::before {
+  content: '秒';
+}
+
+.mode-countdown ::-webkit-scrollbar {
+  display: none;
+}
+
+@media screen and (max-width: 1025px) {
+  .mode-countdown .countdown-root {
+    background-attachment: scroll;
+  }
+
+  .mode-countdown .container {
+    margin: 0;
+    color: #ffffff;
+    line-height: normal;
+    position: absolute;
+    align-items: center;
+    left: 5%;
+    right: 5%;
+    top: 12%;
+    bottom: auto;
+  }
+
+  .mode-countdown .container h2 {
+    font-size: 6em;
+    text-align: center;
+    margin: 10% 0;
+    color: #ffffff;
+  }
+
+  .mode-countdown .container h2 span {
+    color: #ffffff;
+    display: block;
+    text-align: center;
+    font-size: 0.3em;
+    font-weight: 300;
+    letter-spacing: 2px;
+  }
+
+  .mode-countdown .countdown {
+    display: flex;
+    justify-content: space-around;
+    margin: 0;
+    width: 100%;
+  }
+
+  .mode-countdown .countdown div {
+    width: 20%;
+    height: 13vw;
+    margin: 0 10px;
+    line-height: 13vw;
+    font-size: 2em;
+  }
+
+  .mode-countdown .countdown div::before {
+    height: 30px;
+    line-height: 35px;
+    font-size: 0.4em;
+  }
+}
+
+.mode-fireworks * {
+  position: relative;
+  box-sizing: border-box;
+}
+
+.mode-fireworks {
+  height: 100%;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'Russo One', Arial, sans-serif;
+  line-height: 1.25;
+  letter-spacing: 0.06em;
+  background-color: #000000;
+}
+
+.mode-fireworks .hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.mode-fireworks .remove {
+  display: none !important;
+}
+
+.mode-fireworks .blur {
+  filter: blur(12px);
+}
+
+.mode-fireworks .container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mode-fireworks .loading-init {
+  width: 100%;
+  align-self: center;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.mode-fireworks .loading-init__header {
+  font-size: 2.2em;
+}
+
+.mode-fireworks .loading-init__status {
+  margin-top: 1em;
+  font-size: 0.8em;
+  opacity: 0.75;
+}
+
+.mode-fireworks .stage-container {
+  overflow: hidden;
+  box-sizing: initial;
+  border: 1px solid #222222;
+  margin: -1px;
+}
+
+@media (max-width: 840px) {
+  .mode-fireworks .stage-container {
+    border: none;
+    margin: 0;
+  }
+}
+
+.mode-fireworks .canvas-container {
+  width: 100%;
+  height: 100%;
+  transition: filter 0.3s;
+}
+
+.mode-fireworks .canvas-container canvas {
+  position: absolute;
+  mix-blend-mode: lighten;
+  transform: translateZ(0);
+  width: 100%;
+  height: 100%;
+}
+
+.mode-fireworks .controls {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: space-between;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+@media (min-width: 840px) {
+  .mode-fireworks .controls {
+    visibility: visible;
+  }
+
+  .mode-fireworks .controls.hide:hover {
+    opacity: 1;
+  }
+}
+
+.mode-fireworks .menu {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.42);
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.mode-fireworks .menu__inner-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: opacity 0.3s;
+}
+
+.mode-fireworks .menu__header {
+  margin-top: auto;
+  margin-bottom: 8px;
+  padding-top: 16px;
+  font-size: 2em;
+  text-transform: uppercase;
+}
+
+.mode-fireworks .menu__subheader {
+  margin-bottom: auto;
+  padding-bottom: 12px;
+  font-size: 0.86em;
+  opacity: 0.8;
+}
+
+.mode-fireworks .menu form {
+  width: 100%;
+  max-width: 400px;
+  padding: 0 10px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mode-fireworks .menu .form-option {
+  display: flex;
+  align-items: center;
+  margin: 16px 0;
+  transition: opacity 0.3s;
+}
+
+.mode-fireworks .menu .form-option label {
+  display: block;
+  width: 50%;
+  padding-right: 12px;
+  text-align: right;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.mode-fireworks .menu .form-option--select select {
+  display: block;
+  width: 50%;
+  height: 30px;
+  font-size: 1rem;
+  font-family: 'Russo One', Arial, sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.06em;
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.mode-fireworks .menu .form-option--select select option {
+  background-color: black;
+}
+
+.mode-fireworks .menu .form-option--checkbox input {
+  display: block;
+  width: 26px;
+  height: 26px;
+  margin: 0;
+  opacity: 0.5;
+}
+
+@media (max-width: 840px) {
+  .mode-fireworks .menu .form-option select,
+  .mode-fireworks .menu .form-option input {
+    outline: none;
+  }
+}
+
+.mode-fireworks .close-menu-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.mode-fireworks .btn {
+  opacity: 0.16;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  user-select: none;
+  cursor: default;
+  transition: opacity 0.3s;
+}
+
+.mode-fireworks .btn--bright {
+  opacity: 0.5;
+}
+
+@media (min-width: 840px) {
+  .mode-fireworks .btn:hover {
+    opacity: 0.32;
+  }
+
+  .mode-fireworks .btn--bright:hover {
+    opacity: 0.75;
+  }
+}
+
+.mode-fireworks .btn svg {
+  display: block;
+  margin: auto;
+}
+
+.mode-fireworks .credits {
+  margin-top: auto;
+  margin-bottom: 10px;
+  padding-top: 6px;
+  font-size: 0.8em;
+  opacity: 0.75;
+}
+
+.mode-fireworks .credits a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+}
+
+.mode-fireworks .credits a:hover,
+.mode-fireworks .credits a:active {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: underline;
+}
+
+.mode-fireworks .help-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  transition-property: visibility;
+  transition-duration: 0.25s;
+}
+
+.mode-fireworks .help-modal__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transition-property: opacity;
+  transition-timing-function: ease-in;
+  transition-duration: 0.25s;
+}
+
+.mode-fireworks .help-modal__dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  max-height: calc(100vh - 100px);
+  margin: 10px;
+  padding: 20px;
+  border-radius: 0.3em;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transform: scale(0.9, 0.9);
+  transition-property: opacity, transform;
+  transition-timing-function: ease-in;
+  transition-duration: 0.25s;
+}
+
+@media (min-width: 840px) {
+  .mode-fireworks .help-modal__dialog {
+    font-size: 1.25rem;
+    max-width: 500px;
+  }
+}
+
+.mode-fireworks .help-modal__header {
+  font-size: 1.75em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.mode-fireworks .help-modal__body {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1em 0;
+  padding: 1em 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.mode-fireworks .help-modal__close-btn {
+  flex-shrink: 0;
+  outline: none;
+  border: none;
+  border-radius: 2px;
+  padding: 0.25em 0.75em;
+  margin-top: 0.36em;
+  font-family: 'Russo One', Arial, sans-serif;
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background-color: rgba(255, 255, 255, 0.25);
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.mode-fireworks .help-modal__close-btn:hover,
+.mode-fireworks .help-modal__close-btn:active,
+.mode-fireworks .help-modal__close-btn:focus {
+  color: #ffffff;
+  background-color: #0099ff;
+}
+
+.mode-fireworks .help-modal.active {
+  visibility: visible;
+  transition-duration: 0.4s;
+}
+
+.mode-fireworks .help-modal.active .help-modal__overlay {
+  opacity: 1;
+  transition-timing-function: ease-out;
+  transition-duration: 0.4s;
+}
+
+.mode-fireworks .help-modal.active .help-modal__dialog {
+  opacity: 1;
+  transform: scale(1, 1);
+  transition-timing-function: ease-out;
+  transition-duration: 0.4s;
+}
