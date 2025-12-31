@@ -1053,7 +1053,7 @@ function seqSmallBarrage() {
 	
 	return 3400 + barrageCount * 120;
 }
-seqSmallBarrage.cooldown = 15000;
+seqSmallBarrage.cooldown = 9000;
 seqSmallBarrage.lastCalled = Date.now();
 
 
@@ -1067,7 +1067,7 @@ const sequences = [
 
 
 let isFirstSeq = true;
-const finaleCount = 32;
+const finaleCount = 64;
 let currentFinaleCount = 0;
 function startSequence() {
 	if (isFirstSeq) {
@@ -1086,11 +1086,11 @@ function startSequence() {
 		seqRandomFastShell();
 		if (currentFinaleCount < finaleCount) {
 			currentFinaleCount++;
-			return 170;
+			return 110;
 		}
 		else {
 			currentFinaleCount = 0;
-			return 6000;
+			return 3500;
 		}
 	}
 	
@@ -1242,7 +1242,7 @@ function updateGlobals(timeStep, lag) {
 	if (store.state.config.autoLaunch) {
 		autoLaunchTime -= timeStep;
 		if (autoLaunchTime <= 0) {
-			autoLaunchTime = startSequence() * 1.25;
+			autoLaunchTime = startSequence() * 0.85;
 		}
 	}
 }
